@@ -21,12 +21,12 @@ on:
 env:
   REPO_URL: https://github.com/yahyarzq/openwrt-8198c
   REPO_BRANCH: master
-  BUILDROOT: ${{ github.workspace }}/openwrt
+  BUILDROOT: ${{ github.workspace }}/openwrt-8198c
   DEPENDENCIES: ${{ github.workspace }}/dependencies-ubuntu.txt
   CUSTOM_FEEDS_SH: ${{ github.workspace }}/custom-feeds.sh
   CUSTOM_PACKAGES_SH: ${{ github.workspace }}/custom-packages.sh
   CUSTOM_CONFIG_SH: ${{ github.workspace }}/custom-config.sh
-  DOTCONFIG: ${{ github.workspace }}/profile.config
+  DOTCONFIG: ${{ github.workspace }}/openwrt-8198c/profile.config
   TZ: Asia/Jakarta
 
 jobs:
