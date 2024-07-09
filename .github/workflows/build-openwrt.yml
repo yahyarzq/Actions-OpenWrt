@@ -19,14 +19,15 @@ on:
         type: string
 
 env:
-  REPO_URL: https://git.openwrt.org/openwrt/openwrt.git
-  REPO_BRANCH: master
+  REPO_URL: https://github.com/plappermaul/openwrt.git
+  REPO_BRANCH: 8198c
   BUILDROOT: ${{ github.workspace }}/openwrt
   DEPENDENCIES: ${{ github.workspace }}/dependencies-ubuntu.txt
   CUSTOM_FEEDS_SH: ${{ github.workspace }}/custom-feeds.sh
   CUSTOM_PACKAGES_SH: ${{ github.workspace }}/custom-packages.sh
   CUSTOM_CONFIG_SH: ${{ github.workspace }}/custom-config.sh
-  TZ: Asia/Shanghai
+  DOTCONFIG: ${{ github.workspace }}/configd
+  TZ: Asia/Jakarta
 
 jobs:
   build:
@@ -74,6 +75,7 @@ jobs:
     - name: Load custom
       run: |
         chmod +x custom-*.sh
+        cat $DOTCONFIG > $BUILDROOT/.config
         $CUSTOM_FEEDS_SH
         $BUILDROOT/scripts/feeds update -a && $BUILDROOT/scripts/feeds install -a
         $CUSTOM_PACKAGES_SH
