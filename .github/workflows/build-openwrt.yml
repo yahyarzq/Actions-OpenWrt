@@ -19,8 +19,8 @@ on:
         type: string
 
 env:
-  REPO_URL: https://github.com/plappermaul/openwrt.git
-  REPO_BRANCH: 8198c
+  REPO_URL: https://github.com/yahyarzq/openwrt-8198c
+  REPO_BRANCH: master
   BUILDROOT: ${{ github.workspace }}/openwrt
   DEPENDENCIES: ${{ github.workspace }}/dependencies-ubuntu.txt
   CUSTOM_FEEDS_SH: ${{ github.workspace }}/custom-feeds.sh
