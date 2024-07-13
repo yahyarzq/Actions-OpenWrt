@@ -17,16 +17,32 @@ on:
         required: true
         default: 'snapshot'
         type: string
+      brach:
+        description: 'Select OpenWrt brach'
+        required: true
+        default: 'master'
+        type: choice
+        options:
+        - master
+        - 8198c
+        - 8198c-update-testing
+      dotconfigd:
+        description: 'OpenWrt config'
+        required: true
+        default: 'snapshot'
+        type: string
 
 env:
   REPO_URL: https://github.com/yahyarzq/openwrt
-  REPO_BRANCH: 8198c-update-testing
+  REPO_BRANCH: ${{ github.event.inputs.branch }}
   BUILDROOT: ${{ github.workspace }}/openwrt
   DEPENDENCIES: ${{ github.workspace }}/dependencies-ubuntu.txt
   CUSTOM_FEEDS_SH: ${{ github.workspace }}/custom-feeds.sh
   CUSTOM_PACKAGES_SH: ${{ github.workspace }}/custom-packages.sh
   CUSTOM_CONFIG_SH: ${{ github.workspace }}/custom-config.sh
-  DOTCONFIG: ${{ github.workspace }}/profile.config
+  # DOTCONFIG: ${{ github.workspace }}/profile.config
+  DOTCONFIG: ${{ github.event.inputs.dotconfig }}
+  
   TZ: Asia/Jakarta
 
 jobs:
