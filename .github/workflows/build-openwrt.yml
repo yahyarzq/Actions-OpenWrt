@@ -17,8 +17,8 @@ on:
         required: true
         default: 'snapshot'
         type: string
-      brach:
-        description: 'Select OpenWrt brach'
+      branch:
+        description: 'Select OpenWrt branch'
         required: true
         default: 'master'
         type: choice
@@ -29,7 +29,7 @@ on:
       dotconfigd:
         description: 'OpenWrt config'
         required: true
-        default: 'snapshot'
+        default: ' '
         type: string
 
 env:
