@@ -27,11 +27,11 @@ on:
         - 8198c
         - 8198c-fix
         - 8198c-update-testing
-      dotconfigd:
-        description: 'OpenWrt config'
-        required: true
-        default: ' '
-        type: string
+      # dotconfigd:
+      #   description: 'OpenWrt config'
+      #   required: true
+      #   default: ' '
+      #   type: string
 
 env:
   REPO_URL: https://github.com/yahyarzq/openwrt
