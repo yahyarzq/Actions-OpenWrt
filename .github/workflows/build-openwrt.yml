@@ -41,8 +41,8 @@ env:
   CUSTOM_FEEDS_SH: ${{ github.workspace }}/custom-feeds.sh
   CUSTOM_PACKAGES_SH: ${{ github.workspace }}/custom-packages.sh
   CUSTOM_CONFIG_SH: ${{ github.workspace }}/custom-config.sh
-  # DOTCONFIG: ${{ github.workspace }}/profile.config
-  DOTCONFIG: ${{ github.event.inputs.dotconfig }}
+  DOTCONFIG: ${{ github.workspace }}/profile.config
+  # DOTCONFIG: ${{ github.event.inputs.dotconfig }}
   
   TZ: Asia/Jakarta
 
