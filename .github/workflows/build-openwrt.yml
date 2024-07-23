@@ -34,7 +34,7 @@ on:
       #   type: string
 
 env:
-  REPO_URL: https://github.com/yahyarzq/openwrt
+  REPO_URL: https://github.com/yahyarzq/openwrt-8198c
   REPO_BRANCH: ${{ github.event.inputs.branch }}
   BUILDROOT: ${{ github.workspace }}/openwrt
   DEPENDENCIES: ${{ github.workspace }}/dependencies-ubuntu.txt
