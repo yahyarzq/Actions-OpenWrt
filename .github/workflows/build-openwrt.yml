@@ -73,7 +73,7 @@ jobs:
       uses: actions/checkout@main
 
     - name: Download the sources
-      run: git clone --depth 1 --branch $REPO_BRANCH $REPO_URL
+      run: git clone --depth 1 --branch $REPO_BRANCH $REPO_URL openwrt
 
     - name: Auto select a specific code revision
       id: autoselect
@@ -93,7 +93,6 @@ jobs:
       run: |
         chmod +x custom-*.sh
         cat $DOTCONFIG > $BUILDROOT/.config
-        cat $BUILDROOT/.config
         $CUSTOM_FEEDS_SH
         $BUILDROOT/scripts/feeds update -a && $BUILDROOT/scripts/feeds install -a
         $CUSTOM_PACKAGES_SH
