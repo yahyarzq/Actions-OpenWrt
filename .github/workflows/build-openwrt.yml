@@ -80,6 +80,7 @@ jobs:
         chmod +x custom-*.sh
         $CUSTOM_FEEDS_SH
         $BUILD_ROOT/scripts/feeds update -a && $BUILD_ROOT/scripts/feeds install -a
+        cp ${{ github.workspace }}/.config $BUILD_ROOT/.config
 
     - name: Start SSH via tmate
       uses: rdp-studio/ssh2actions@main
