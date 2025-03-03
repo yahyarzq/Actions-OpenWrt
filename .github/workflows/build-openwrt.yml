@@ -12,10 +12,19 @@ on:
         options:
         - true
         - false
-      version:
-        description: 'OpenWrt version'
+      releases_branch:
+        description: "Select the *wrt flavour"
         required: true
-        default: 'snapshot'
+        default: "openwrt"
+        type: choice
+        options:
+          - openwrt
+          - immortalwrt
+          - x-wrt
+      version:
+        description: 'Select the releases branch'
+        required: true
+        default: 'v24.10.0'
         type: string
 
 env:
