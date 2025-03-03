@@ -13,14 +13,14 @@ on:
         - true
         - false
       releases_branch:
-        description: "Select the *wrt flavour"
+        description: "Select the *wrt flavour \nformat type:release tags"
         required: true
-        default: "openwrt"
+        default: "openwrt:v24.10.0"
         type: choice
         options:
-          - openwrt
-          - immortalwrt
-          - x-wrt
+          - openwrt:v24.10.0
+          - immortalwrt:v24.10.0
+          - x-wrt:25.01_b202502210647
       version:
         description: 'Select the releases branch'
         required: true
@@ -66,10 +66,10 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@main
-
+      
     - name: Download the sources
-      run: git clone --branch $REPO_BRANCH $REPO_URL
-
+      run: git clone --branch $(echo ${{ github.event.inputs.releases_branch }} | awk -F':' '{print $2}') "$(echo ${{ github.event.inputs.releases_branch }} | awk -F':' '{print $1}')/$(echo ${{ github.event.inputs.releases_branch }} | awk -F':' '{print $1}')"
+    
     - name: Auto select a specific code revision
       id: autoselect
       if: github.event.client_payload.version == 'stable'
