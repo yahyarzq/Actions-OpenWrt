@@ -90,9 +90,9 @@ jobs:
 
     - name: Manual select a specific code revision
       id: manualselect
-      if: github.event.inputs.version != null && github.event.inputs.version != 'snapshot'
+      if: ${{ BRANCH  }} != null && ${{ BRANCH  }} != 'snapshot'
       run: |
-        cd $BUILD_ROOT && git checkout ${{ github.event.inputs.version }}
+        cd $BUILD_ROOT && git checkout ${{ ${{ BRANCH  }} }}
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Load custom
@@ -150,7 +150,7 @@ jobs:
 
     - name: Generate snapshot Release Tag
       id: snapshottag 
-      if: github.event.inputs.version == 'snapshot'
+      if: ${{ BRANCH  }} == 'snapshot'
       run: |
         echo "release_tag=SNAPSHOT_$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
         echo "status=success" >> $GITHUB_OUTPUT
