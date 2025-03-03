@@ -31,6 +31,7 @@ env:
   REPO_URL: https://github.com/x-wrt/x-wrt
   REPO_BRANCH: 25.01_b202502210647
   BUILD_ROOT: ${{ github.workspace }}/$(echo ${{ github.event.inputs.releases_branch }} | awk -F':' '{print $1}')
+  WRT_FLAVOUR: ${{ github.workspace }}/$(echo ${{ github.event.inputs.releases_branch }} | awk -F':' '{print $1}')
   DEPENDENCIES: ${{ github.workspace }}/dependencies-ubuntu.txt
   CUSTOM_FEEDS_SH: ${{ github.workspace }}/custom-feeds.sh
   CUSTOM_PACKAGES_SH: ${{ github.workspace }}/custom-packages.sh
@@ -115,7 +116,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success'
       with:
-        name: OpenWrt_bin_${{ env.DEVICE_NAME }}_${{ env.FILE_DATE }}
+        name: ${{WRT_FLAVOUR}}_bin_${{ env.DEVICE_NAME }}_${{ env.FILE_DATE }}
         path: ${{ env.BUILD_ROOT }}/bin
 
     - name: Organize files
@@ -130,7 +131,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success'
       with:
-        name: OpenWrt_firmware_${{ env.DEVICE_NAME }}_${{ env.FILE_DATE }}
+        name: ${{WRT_FLAVOUR}}_firmware_${{ env.DEVICE_NAME }}_${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
     - name: Generate stable Release Tag
