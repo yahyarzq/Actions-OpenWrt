@@ -117,7 +117,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success'
       with:
-        name: ${{WRT_FLAVOUR}}_bin_${{ env.DEVICE_NAME }}_${{ env.FILE_DATE }}
+        name: ${{env.WRT_FLAVOUR}}_bin_${{ env.DEVICE_NAME }}_${{ env.FILE_DATE }}
         path: ${{ env.BUILD_ROOT }}/bin
 
     - name: Organize files
@@ -132,7 +132,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success'
       with:
-        name: ${{WRT_FLAVOUR}}_firmware_${{ env.DEVICE_NAME }}_${{ env.FILE_DATE }}
+        name: ${{env.WRT_FLAVOUR}}_firmware_${{ env.DEVICE_NAME }}_${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
     - name: Generate stable Release Tag
