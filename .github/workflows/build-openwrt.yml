@@ -70,9 +70,10 @@ jobs:
       
     - name: Download the sources
       run: |
-        REPO="https://github.com/$(echo ${{ github.event.inputs.releases_branch }} | awk -F':' '{print $1}')"
+        REPO="$(echo ${{ github.event.inputs.releases_branch }} | awk -F':' '{print $1}')/$(echo ${{ github.event.inputs.releases_branch }} | awk -F':' '{print $1}')"
+        URL="https://github.com/"
         BRANCH=$(echo ${{ github.event.inputs.releases_branch }} | awk -F':' '{print $2}')
-        git clone --branch "$BRANCH" "$REPO/$REPO"
+        git clone --branch "$BRANCH" "$URL/$REPO"
       
     - name: Auto select a specific code revision
       id: autoselect
