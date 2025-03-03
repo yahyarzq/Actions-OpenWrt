@@ -68,8 +68,11 @@ jobs:
       uses: actions/checkout@main
       
     - name: Download the sources
-      run: git clone --branch $(echo ${{ github.event.inputs.releases_branch }} | awk -F':' '{print $2}') "$(echo ${{ github.event.inputs.releases_branch }} | awk -F':' '{print $1}')/$(echo ${{ github.event.inputs.releases_branch }} | awk -F':' '{print $1}')"
-    
+      run: |
+        REPO=$(echo ${{ github.event.inputs.releases_branch }} | awk -F':' '{print $1}')
+        BRANCH=$(echo ${{ github.event.inputs.releases_branch }} | awk -F':' '{print $2}')
+        git clone --branch "$BRANCH" "$REPO/$REPO"
+      
     - name: Auto select a specific code revision
       id: autoselect
       if: github.event.client_payload.version == 'stable'
